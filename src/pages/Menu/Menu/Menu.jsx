@@ -20,7 +20,7 @@ const Menu = () => {
     const pizza = menu.filter(item => item.category === 'pizza')
 
     return (
-        <div>
+        <>
             <Helmet>
                 <title>Foodee | Menu</title>
             </Helmet>
@@ -38,7 +38,7 @@ const Menu = () => {
 
             <MenuCategory items={soup}
                 img={soupImg} title='soup'></MenuCategory>
-        </div>
+        </>
     );
 };
 
