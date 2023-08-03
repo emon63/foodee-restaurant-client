@@ -18,7 +18,19 @@ const Navbar = () => {
         <li><Link to='secret'>Secret</Link></li>
 
         {
-            user ? <li className="h-[20]"><button onClick={handleLogOut} className="btn mt-1 h-[20] btn-ghost">Log Out</button></li> :
+            user ? <>
+                <li>
+                    <button onClick={handleLogOut} className="btn mt-1 h-[20] btn-ghost">Log Out</button>
+                </li>
+                <li className="ps-5 h-[20] mt-2">{user?.displayName}</li>
+                <li>
+                    <div className="avatar">
+                        <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={user.photoURL} />
+                        </div>
+                    </div>
+                </li>
+            </> :
                 <li><Link to='/login'>Login</Link></li>
         }
 
