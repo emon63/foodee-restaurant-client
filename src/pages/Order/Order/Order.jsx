@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from '../../../hooks/useMenu';
 import OrderTab from '../OrderTab/OrderTab';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 const Order = () => {
 
@@ -28,11 +28,11 @@ const Order = () => {
             <Cover img={orderCoverImg} title={'Order Food'}></Cover>
             <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList>
-                    <Tab>Salads</Tab>
-                    <Tab>Pizza</Tab>
-                    <Tab>Soups</Tab>
-                    <Tab>Dessert</Tab>
-                    <Tab>Drinks</Tab>
+                    <Tab><Link to='/order/salad'>Salads</Link></Tab>
+                    <Tab><Link to='/order/pizza'>Pizza</Link></Tab>
+                    <Tab><Link to='/order/soup'>Soups</Link></Tab>
+                    <Tab><Link to='/order/dessert'>Dessert</Link></Tab>
+                    <Tab><Link to='/order/drinks'>Drinks</Link></Tab>
                 </TabList>
                 <TabPanel>
                     <OrderTab items={salad}></OrderTab>
