@@ -24,7 +24,7 @@ const FoodCard = ({ item }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.insertedID) {
+                    if (data.insertedId) {
                         refetch();
                         Swal.fire({
                             position: 'top-end',

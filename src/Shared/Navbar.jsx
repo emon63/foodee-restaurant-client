@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><Link to='/order'>Order Food</Link></li>
         <li><Link to='secret'>Secret</Link></li>
         <li><Link to='/dashboard/mycart'>
-            <button className="btn gap-2">
+            <button className="btn py-1 px-3 bg-transparent">
                 <FaShoppingCart></FaShoppingCart>
                 <div className="badge badge-secondary">+{cart?.length || 0}</div>
             </button>
@@ -28,11 +28,11 @@ const Navbar = () => {
 
         {
             user ? <>
-                <li>
-                    <button onClick={handleLogOut} className="btn mt-1 h-[20] btn-ghost">Log Out</button>
+                <li className="items-center">
+                    <button onClick={handleLogOut} className="btn content-center p-3 btn-ghost">Log Out</button>
                 </li>
-                <li className="ps-5 h-[20] mt-2">{user?.displayName}</li>
-                <li className="">
+                <li className="items-center px-3">{user?.displayName}</li>
+                <li className="items-center">
                     <div className="avatar">
                         <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src={user.photoURL} />
@@ -40,7 +40,7 @@ const Navbar = () => {
                     </div>
                 </li>
             </> :
-                <li><Link to='/login'>Login</Link></li>
+                <li className="items-center"><Link to='/login'>Login</Link></li>
         }
 
 
@@ -60,7 +60,7 @@ const Navbar = () => {
                 <a className="btn text-cyan-300 btn-outline  btn-ghost normal-case text-xl">Foodee Restaurant</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal items-center">
                     {navItems}
                 </ul>
             </div>
