@@ -1,10 +1,12 @@
 import { FaBook, FaCalendarAlt, FaHome, FaShoppingCart, FaUsers, FaUtensils, FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart()
-    const isAdmin = true;
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin()
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -37,8 +39,8 @@ const Dashboard = () => {
 
                     <div className="divider"></div>
                     <li><NavLink to='/'><FaHome></FaHome>Home</NavLink></li>
-                    <li><NavLink to='menu'>Our Menu</NavLink></li>
-                    <li><NavLink to='order/salad'>Order Food</NavLink></li>
+                    <li><NavLink to='/menu'>Our Menu</NavLink></li>
+                    <li><NavLink to='/order/salad'>Order Food</NavLink></li>
                 </ul>
 
             </div>
