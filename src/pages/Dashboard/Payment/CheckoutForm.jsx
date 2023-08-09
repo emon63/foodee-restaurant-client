@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import './Checkout.css';
 import Swal from "sweetalert2";
 
 const CheckoutForm = ({ cart, price }) => {
@@ -14,11 +15,13 @@ const CheckoutForm = ({ cart, price }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret)
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret)
+                })
+        }
     }, [price, axiosSecure])
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -65,8 +68,11 @@ const CheckoutForm = ({ cart, price }) => {
                 email: user.email,
                 transactionId: paymentIntent.id,
                 price,
+                date: new Date(),
+                status: 'service pending',
                 quantity: cart.length,
-                items: cart.map(item => item._id),
+                cartItems: cart.map(item => item._id),
+                menuItems: cart.map(item => item.menuItemId),
                 itemNames: cart.map(item => item.name)
             }
             axiosSecure.post('/payments', payment)
